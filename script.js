@@ -840,7 +840,7 @@ async function submitProjectRequest(event) {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:5000/project-request",
+            "https://qelvanta-ai.onrender.com/project-request",
             {
                 method: "POST",
 
