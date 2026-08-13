@@ -8,7 +8,7 @@ from email.message import EmailMessage
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://qelvanta-ai-1.onrender.com"])
 
 
 @app.route("/")
