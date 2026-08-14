@@ -1,3 +1,5 @@
+// ================= HERO BACKGROUND =================
+
 const images = [
     "ai1.avif",
     "ai2.avif",
@@ -5,15 +7,25 @@ const images = [
     "ai4.avif"
 ];
 
-let i = 0;
+let imageIndex = 0;
 
 setInterval(() => {
-    i = (i + 1) % images.length;
 
-    document.querySelector(".hero").style.background =
-        `url("${images[i]}") center / cover no-repeat`;
+    imageIndex =
+        (imageIndex + 1) % images.length;
+
+    const hero =
+        document.querySelector(".hero");
+
+    if (hero) {
+        hero.style.background =
+            `url("${images[imageIndex]}") center / cover no-repeat`;
+    }
 
 }, 2000);
+
+
+// ================= MACHINE LEARNING PROJECTS =================
 
 const mlProjects = [
     "Customer Churn Prediction",
@@ -40,6 +52,9 @@ const mlProjects = [
     "Customer Purchase Prediction"
 ];
 
+
+// ================= DEEP LEARNING PROJECTS =================
+
 const dlProjects = [
     "Synthetic Image Detection",
     "Object Detection System",
@@ -65,24 +80,29 @@ const dlProjects = [
     "Visual Search System"
 ];
 
+
+// ================= OPEN PROJECT LIST =================
+
 function openProjects(type) {
 
     const projects =
         type === "ml"
-        ? mlProjects
-        : dlProjects;
+            ? mlProjects
+            : dlProjects;
 
     const title =
         type === "ml"
-        ? "Machine Learning Projects"
-        : "Deep Learning Projects";
+            ? "Machine Learning Projects"
+            : "Deep Learning Projects";
+
 
     let projectHTML = `
         <div class="project-modal">
 
             <div class="project-modal-content">
 
-                <button class="close-projects"
+                <button
+                    class="close-projects"
                     onclick="closeProjects()">
                     ×
                 </button>
@@ -96,6 +116,7 @@ function openProjects(type) {
                 <div class="project-list">
     `;
 
+
     projects.forEach((project, index) => {
 
         projectHTML += `
@@ -103,9 +124,13 @@ function openProjects(type) {
                 class="project-item"
                 onclick="showProjectDetails('${type}', ${index})">
 
-                <span>${String(index + 1).padStart(2, "0")}</span>
+                <span>
+                    ${String(index + 1).padStart(2, "0")}
+                </span>
 
-                <strong>${project}</strong>
+                <strong>
+                    ${project}
+                </strong>
 
                 <b>→</b>
 
@@ -113,6 +138,7 @@ function openProjects(type) {
         `;
 
     });
+
 
     projectHTML += `
                 </div>
@@ -122,12 +148,15 @@ function openProjects(type) {
         </div>
     `;
 
+
     document.body.insertAdjacentHTML(
         "beforeend",
         projectHTML
     );
 }
 
+
+// ================= CLOSE PROJECT LIST =================
 
 function closeProjects() {
 
@@ -139,7 +168,11 @@ function closeProjects() {
     }
 }
 
+
+// ================= ML PROJECT DETAILS =================
+
 const mlProjectDetails = [
+
     {
         title: "Customer Churn Prediction",
         description: "Predicts whether a customer is likely to stop using a company's product or service.",
@@ -339,82 +372,11 @@ const mlProjectDetails = [
     }
 ];
 
-function showProjectDetails(type, index) {
 
-    if (type === "ml") {
-
-        const project = mlProjectDetails[index];
-
-        const detailsHTML = `
-            <div class="project-details-modal">
-
-                <div class="project-details-content">
-
-                    <button
-                        class="close-projects"
-                        onclick="closeProjectDetails()">
-                        ×
-                    </button>
-
-                    <p class="modal-label">
-                        QELVANTA PROJECT LAB
-                    </p>
-
-                    <h2>${project.title}</h2>
-
-                    <div class="detail-block">
-                        <h3>What it does</h3>
-                        <p>${project.description}</p>
-                    </div>
-
-                    <div class="detail-block">
-                        <h3>Objective</h3>
-                        <p>${project.objective}</p>
-                    </div>
-
-                    <div class="detail-block">
-                        <h3>Technology</h3>
-                        <p>${project.technology}</p>
-                    </div>
-
-                    <div class="detail-block">
-                        <h3>Model</h3>
-                        <p>${project.model}</p>
-                    </div>
-
-                    <div class="detail-block">
-                        <h3>Real-world use</h3>
-                        <p>${project.use}</p>
-                    </div>
-
-                    <button class="request-project-btn">
-                        Request This Project →
-                    </button>
-
-                </div>
-
-            </div>
-        `;
-
-        document.body.insertAdjacentHTML(
-            "beforeend",
-            detailsHTML
-        );
-    }
-}
-
-
-function closeProjectDetails() {
-
-    const modal =
-        document.querySelector(".project-details-modal");
-
-    if (modal) {
-        modal.remove();
-    }
-}
+// ================= DL PROJECT DETAILS =================
 
 const dlProjectDetails = [
+
     {
         title: "Synthetic Image Detection",
         description: "Identifies whether an image is naturally captured or synthetically generated.",
@@ -614,14 +576,24 @@ const dlProjectDetails = [
     }
 ];
 
+
+// ================= PROJECT DETAILS =================
+
 function showProjectDetails(type, index) {
 
     const project =
         type === "ml"
-        ? mlProjectDetails[index]
-        : dlProjectDetails[index];
+            ? mlProjectDetails[index]
+            : dlProjectDetails[index];
+
+
+    if (!project) {
+        return;
+    }
+
 
     const detailsHTML = `
+
         <div class="project-details-modal">
 
             <div class="project-details-content">
@@ -636,7 +608,9 @@ function showProjectDetails(type, index) {
                     QELVANTA PROJECT LAB
                 </p>
 
-                <h2>${project.title}</h2>
+                <h2>
+                    ${project.title}
+                </h2>
 
                 <div class="detail-block">
                     <h3>What it does</h3>
@@ -666,13 +640,16 @@ function showProjectDetails(type, index) {
                 <button
                     class="request-project-btn"
                     onclick="openRequestForm('${project.title}')">
+
                     Request This Project →
+
                 </button>
 
             </div>
 
         </div>
     `;
+
 
     document.body.insertAdjacentHTML(
         "beforeend",
@@ -681,7 +658,7 @@ function showProjectDetails(type, index) {
 }
 
 
-// ================= CLOSE PROJECT DETAILS =================
+// ================= CLOSE DETAILS =================
 
 function closeProjectDetails() {
 
@@ -694,11 +671,12 @@ function closeProjectDetails() {
 }
 
 
-// ================= PROJECT REQUEST FORM =================
+// ================= REQUEST FORM =================
 
 function openRequestForm(projectName) {
 
     const formHTML = `
+
         <div class="request-modal">
 
             <div class="request-content">
@@ -713,16 +691,21 @@ function openRequestForm(projectName) {
                     QELVANTA PROJECT LAB
                 </p>
 
-                <h2>Request This Project</h2>
+                <h2>
+                    Request This Project
+                </h2>
 
                 <p class="request-intro">
                     Tell us about your requirements and
                     our team will review your project request.
                 </p>
 
-                <form onsubmit="submitProjectRequest(event)">
+                <form
+                    onsubmit="submitProjectRequest(event)">
 
-                    <label>Selected Project</label>
+                    <label>
+                        Selected Project
+                    </label>
 
                     <input
                         type="text"
@@ -731,7 +714,9 @@ function openRequestForm(projectName) {
                         readonly
                     >
 
-                    <label>Your Name</label>
+                    <label>
+                        Your Name
+                    </label>
 
                     <input
                         type="text"
@@ -740,7 +725,9 @@ function openRequestForm(projectName) {
                         required
                     >
 
-                    <label>Email Address</label>
+                    <label>
+                        Email Address
+                    </label>
 
                     <input
                         type="email"
@@ -749,7 +736,9 @@ function openRequestForm(projectName) {
                         required
                     >
 
-                    <label>Project Requirements</label>
+                    <label>
+                        Project Requirements
+                    </label>
 
                     <textarea
                         id="clientRequirements"
@@ -760,7 +749,19 @@ function openRequestForm(projectName) {
                     <button
                         type="submit"
                         class="submit-request-btn">
-                        Send Project Request →
+
+                        <span class="btn-text">
+                            Send Project Request →
+                        </span>
+
+                        <span
+                            class="btn-loading"
+                            style="display:none;">
+
+                            Sending...
+
+                        </span>
+
                     </button>
 
                 </form>
@@ -769,6 +770,7 @@ function openRequestForm(projectName) {
 
         </div>
     `;
+
 
     document.body.insertAdjacentHTML(
         "beforeend",
@@ -790,51 +792,53 @@ function closeRequestForm() {
 }
 
 
-// ================= SUBMIT REQUEST =================
-
-function submitProjectRequest(event) {
-
-    event.preventDefault();
-
-    const project =
-        document.getElementById("selectedProject").value;
-
-    const name =
-        document.getElementById("clientName").value;
-
-    const email =
-        document.getElementById("clientEmail").value;
-
-    const requirements =
-        document.getElementById("clientRequirements").value;
-
-    console.log("Project:", project);
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Requirements:", requirements);
-
-    alert(
-        "Thank you! Your project request has been received."
-    );
-
-    closeRequestForm();
-}
+// ================= SUBMIT PROJECT REQUEST =================
 
 async function submitProjectRequest(event) {
 
     event.preventDefault();
 
+
+    const button =
+        event.target.querySelector(
+            ".submit-request-btn"
+        );
+
+    const buttonText =
+        button.querySelector(".btn-text");
+
+    const loadingText =
+        button.querySelector(".btn-loading");
+
+
+    // Prevent double click
+    button.disabled = true;
+
+
+    // Loading state
+    buttonText.style.display = "none";
+    loadingText.style.display = "inline";
+
+
     const project =
-        document.getElementById("selectedProject").value;
+        document.getElementById(
+            "selectedProject"
+        ).value;
 
     const name =
-        document.getElementById("clientName").value;
+        document.getElementById(
+            "clientName"
+        ).value;
 
     const email =
-        document.getElementById("clientEmail").value;
+        document.getElementById(
+            "clientEmail"
+        ).value;
 
     const requirements =
-        document.getElementById("clientRequirements").value;
+        document.getElementById(
+            "clientRequirements"
+        ).value;
 
 
     try {
@@ -849,16 +853,19 @@ async function submitProjectRequest(event) {
                 },
 
                 body: JSON.stringify({
+
                     project: project,
                     name: name,
                     email: email,
                     requirements: requirements
+
                 })
             }
         );
 
 
-        const data = await response.json();
+        const data =
+            await response.json();
 
 
         if (data.success) {
@@ -875,6 +882,13 @@ async function submitProjectRequest(event) {
                 "Something went wrong. Please try again."
             );
 
+            button.disabled = false;
+
+            buttonText.style.display =
+                "inline";
+
+            loadingText.style.display =
+                "none";
         }
 
     } catch (error) {
@@ -882,7 +896,15 @@ async function submitProjectRequest(event) {
         console.error(error);
 
         alert(
-            "Backend server is not running."
+            "Unable to connect to the backend."
         );
+
+        button.disabled = false;
+
+        buttonText.style.display =
+            "inline";
+
+        loadingText.style.display =
+            "none";
     }
 }

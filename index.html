@@ -1,18 +1,26 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Qelvanta | AI Innovation</title>
 
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+
+    <!-- Load JavaScript after HTML is parsed -->
+    <script src="script.js" defer></script>
+
 </head>
 
 <body>
 
     <!-- NAVBAR -->
+
     <nav class="navbar">
 
         <div class="logo">
@@ -20,17 +28,24 @@
         </div>
 
         <div class="nav-links">
+
             <a href="#home">Home</a>
+
             <a href="#services">Services</a>
+
             <a href="#about">About</a>
+
             <a href="#projects">Projects</a>
+
             <a href="#contact">Contact</a>
+
         </div>
 
     </nav>
 
 
     <!-- HERO -->
+
     <section class="hero" id="home">
 
         <div class="hero-overlay"></div>
@@ -67,14 +82,18 @@
         </div>
 
         <div class="scroll-indicator">
+
             <span></span>
+
             Scroll to explore
+
         </div>
 
     </section>
 
 
     <!-- SERVICES -->
+
     <section class="services" id="services">
 
         <div class="section-heading">
@@ -97,6 +116,7 @@
         <div class="service-grid">
 
             <div class="service-card">
+
                 <div class="icon">✦</div>
 
                 <h3>Artificial Intelligence</h3>
@@ -105,10 +125,12 @@
                     Intelligent solutions designed to automate
                     processes and solve complex problems.
                 </p>
+
             </div>
 
 
             <div class="service-card">
+
                 <div class="icon">◈</div>
 
                 <h3>Machine Learning</h3>
@@ -117,10 +139,12 @@
                     Predictive models that transform business
                     data into meaningful outcomes.
                 </p>
+
             </div>
 
 
             <div class="service-card">
+
                 <div class="icon">⌁</div>
 
                 <h3>Data Analytics</h3>
@@ -129,10 +153,12 @@
                     Discover valuable insights from your data
                     and make smarter decisions.
                 </p>
+
             </div>
 
 
             <div class="service-card">
+
                 <div class="icon">◇</div>
 
                 <h3>Digital Solutions</h3>
@@ -141,82 +167,96 @@
                     Modern web solutions built for startups,
                     businesses and growing organizations.
                 </p>
+
             </div>
 
         </div>
 
     </section>
-<!-- AI PROJECT LAB -->
-
-<section class="project-lab" id="projects">
-
-    <div class="lab-heading">
-
-        <p>QELVANTA PROJECT LAB</p>
-
-        <h2>
-            Explore Our
-            <span>AI Projects.</span>
-        </h2>
-
-        <p class="lab-description">
-            Explore real-world Artificial Intelligence projects
-            and choose a solution that matches your requirements.
-        </p>
-
-    </div>
 
 
-    <div class="project-category">
+    <!-- AI PROJECT LAB -->
 
-        <!-- Machine Learning -->
+    <section class="project-lab" id="projects">
 
-        <div class="project-box">
+        <div class="lab-heading">
 
-            <div class="project-box-icon">
-                ML
-            </div>
+            <p>QELVANTA PROJECT LAB</p>
 
-            <h3>Machine Learning Projects</h3>
+            <h2>
+                Explore Our
+                <span>AI Projects.</span>
+            </h2>
 
-            <p>
-                Explore 20+ Machine Learning projects including
-                prediction, classification, recommendation and analytics.
+            <p class="lab-description">
+                Explore real-world Artificial Intelligence projects
+                and choose a solution that matches your requirements.
             </p>
-
-            <button class="project-btn" onclick="openProjects('ml')">
-                Explore ML Projects →
-            </button>
 
         </div>
 
 
-        <!-- Deep Learning -->
+        <div class="project-category">
 
-        <div class="project-box">
 
-            <div class="project-box-icon">
-                DL
+            <!-- Machine Learning -->
+
+            <div class="project-box">
+
+                <div class="project-box-icon">
+                    ML
+                </div>
+
+                <h3>Machine Learning Projects</h3>
+
+                <p>
+                    Explore 20+ Machine Learning projects including
+                    prediction, classification, recommendation and analytics.
+                </p>
+
+                <button
+                    class="project-btn"
+                    onclick="openProjects('ml')">
+
+                    Explore ML Projects →
+
+                </button>
+
             </div>
 
-            <h3>Deep Learning Projects</h3>
 
-            <p>
-                Explore 20+ Deep Learning projects including
-                computer vision, NLP and intelligent AI systems.
-            </p>
+            <!-- Deep Learning -->
 
-            <button class="project-btn" onclick="openProjects('dl')">
-                Explore DL Projects →
-            </button>
+            <div class="project-box">
+
+                <div class="project-box-icon">
+                    DL
+                </div>
+
+                <h3>Deep Learning Projects</h3>
+
+                <p>
+                    Explore 20+ Deep Learning projects including
+                    computer vision, NLP and intelligent AI systems.
+                </p>
+
+                <button
+                    class="project-btn"
+                    onclick="openProjects('dl')">
+
+                    Explore DL Projects →
+
+                </button>
+
+            </div>
+
 
         </div>
 
-    </div>
-
-</section>
-
+    </section>
 
 
 </body>
+
 </html>
+```
