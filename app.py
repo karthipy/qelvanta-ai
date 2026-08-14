@@ -1,3 +1,4 @@
+```python
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -8,7 +9,9 @@ from email.message import EmailMessage
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, origins=["https://qelvanta-ai-1.onrender.com"])
+
+# Allow frontend to connect to backend
+CORS(app)
 
 
 @app.route("/")
@@ -90,3 +93,4 @@ Requirements:
 
 if __name__ == "__main__":
     app.run(debug=True)
+```
